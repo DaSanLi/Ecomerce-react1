@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './App.css'
 import Header from './componentes/Header'
 import Producto from './componentes/Producto';
-import Carrito from './componentes/carrito';
+import Carrito from './componentes/Carrito';
 import Filter from './componentes/Filter';
 import Footer from './componentes/Footer';
 function App() {
