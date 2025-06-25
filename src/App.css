@@ -1,0 +1,458 @@
+*{
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+body{
+  background-color: #2D2D2D;
+  color: #F2F2F2;
+  position: relative;
+}
+
+.titulo{
+  background-color: #1F1F1F;
+  font-size: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.titulo h1{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-justify: center;
+  margin: 50px 0px;
+}
+
+.div-productos{
+  padding: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 100px;
+}
+
+.producto{
+  position: relative;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 325px;
+  height: 325px;
+  background-color: #1F1F1F;
+  border-radius: 5%;
+}
+
+.producto img{
+  max-width: 200px;
+  max-height: 200px;
+  object-fit: contain;
+  width: fit-content;
+}
+
+.producto p{
+  margin: 5px 0;
+  width: 250px;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  font-size: 1.4em;
+}
+
+.div-items{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.div-items button{
+  max-width: 75px;
+  max-height: 50px;
+  width: 100%;
+  height: 100%;
+  padding: 2px;
+  transition: all 0.3s ease;
+  border-radius: 10%;
+}
+
+.div-items button:hover{
+  scale: 1.2;
+  background-color: #00FFFF;
+}
+
+.div-items button img{
+  width: 100%;
+  height: 100%;
+  max-width: 150px;
+  max-height: 30px;
+  object-fit: contain
+}
+
+.position{
+  z-index: 10;
+  display: flex;
+  position: sticky;
+  top: 0px;
+  background-color: #121212;
+  @supports ((background-color: rgba(51, 51, 51, 0.7)) and (backdrop-filter: blur(10px))) or 
+            ((background-color: rgba(51, 51, 51, 0.7)) and (-webkit-backdrop-filter: blur(10px))) {
+              background-color: rgba(51, 51, 51, 0.7); /* Gris oscuro con 70% de opacidad */
+              backdrop-filter: blur(10px); /* Desenfoque de fondo */
+              -webkit-backdrop-filter: blur(10px); /* Safari */
+  }
+}
+
+.login{
+  display: flex;
+  flex: 1 1 20%;
+  align-items: center;
+  flex-direction: column;
+  margin: 10px;
+}
+
+.login form, .login p{
+  font-size: 0.9em;
+  margin: 2px;
+}
+
+.login form > *{
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 5px;
+}
+
+.login form button{
+  margin: 5px;
+}
+
+.loginB{
+  margin: 25px;
+  font-size: 1.2em;
+}
+
+.filter-container{
+  display: flex;
+  flex: 2 1 40%;
+  justify-content: center;
+  height: auto;
+}
+
+.filter-container-position{
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  width: fit-content;
+  padding: 10px;
+}
+
+.filter-container-position{
+  margin: 10px 0px;
+}
+
+.filter-container-position *{
+  margin: 5px 0px;
+}
+
+.div-carrito{
+  padding: 20px;
+  display: flex;
+  flex: 2 1 30%;
+  justify-content: end;
+  position: relative; /* necesario para que el carrito se posicione relativo a este */
+}
+
+.contenedor{
+  display: none;
+  position: absolute;
+  top: 10px;
+  right: 0px;
+  width: 0px;
+  height: 100vh;
+  background-color: #1A1A1A;
+  color: #DADADA;
+  z-index: 10;
+  transition: all 0.3s ease;
+  visibility: hidden;
+}
+
+.contenedor.Abrir{
+  border: #121212 solid 1px;
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+  position: absolute;
+  top: 10px;
+  right: 85px;
+  visibility: visible;
+  width: 500px;
+  height: 95vh;
+  overflow-y: auto;
+  border-radius: 5%;
+}
+.producto-cesta{
+  margin: 5px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: fit-content;
+  background-color: #1F1F1F;
+}
+
+.producto-cesta > *{
+  margin: 5px 20px;
+}
+
+.div-carrito button{
+  z-index: 11;
+  max-width: 100px;
+  max-height: 100px;
+  width: fit-content;
+  height: fit-content;
+  padding: 2px;
+  border-radius: 10%;
+}
+.div-carrito button:hover{
+  scale: 1.2;
+  background-color: #00FFFF;
+}
+
+.div-carrito img{
+  max-width: 50px;
+  max-height: 50px;
+  width: fit-content;
+  height: fit-content;
+  object-fit: contain;
+  object-fit: cover;
+}
+
+.carrito-inferior{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  height: fit-content;
+  position: sticky;
+  bottom: -25px;
+  background-color: #2D2D2D;
+  z-index: 1000;
+}
+
+.carrito-inferior > *{
+  width: fit-content;
+  height: fit-content;
+  margin: 10px 0px;
+}
+
+.carrito-inferior button{
+  min-width: 60px;
+  min-height: 30px;
+  width: fit-content;
+  height: fit-content;
+  padding: 2px;
+  border-radius: 10%;
+}
+
+#registro{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 40px 20px;
+}
+
+#registro form{
+  padding: 20px; 
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+#registro form .formInterior{
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+  justify-content: space-between;
+  width: fit-content;
+  min-width: 300px;
+  height: fit-content;
+  margin: 20px 20px;
+}
+
+.legend-btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+}
+
+.legend-btn button{
+  width: fit-content;
+  height: fit-content;
+}
+
+.Footer{
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: fit-content;
+  background-color: #121212;
+}
+
+.Footer p, .Footer img{
+  font-size: 1.6em;
+  width: fit-content;
+  height: fit-content;
+  object-fit: cover;
+}
+.Footer img{
+  max-width: 50px;
+  max-height: 50px;
+}
+
+@media (max-width: 600px) {
+  .titulo{
+    font-size: 1.2em;
+  }
+
+  .producto{
+    width: 250px;
+    height: 250px;
+  }
+
+  .producto img{
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+  }
+  
+  .producto p{
+    margin: 5px 0;
+    width: 150px;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    font-size: 1.2em;
+  }
+
+  .filter-container{
+    flex-direction: column;
+  }
+  
+  .filter-container > *{
+    margin: 5px 0px;
+  }
+
+.contenedor{
+  display: none;
+  position: absolute;
+  top: 10px;
+  right: 0px;
+  width: 0px;
+  height: 0vh;
+  background-color: #1A1A1A;
+  color: #DADADA;
+  z-index: 10;
+  transition: all 0.3s ease;
+  visibility: hidden;
+}
+
+.contenedor.Abrir{
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0px;
+  position: absolute;
+  top: 100px;
+  right: 0px;
+  visibility: visible;
+  width: fit-content;
+  height: 80vh;
+  overflow-y: auto;
+  border: #121212 solid 1px;
+  border-radius: 5%;
+}
+
+.contenedor.Abrir h1{
+  min-width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-justify: center;
+}
+
+.producto-cesta{
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-width: 275px;
+  max-width: 275px;
+  background-color: #1F1F1F;
+}
+
+.producto-cesta > *{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px 20px;
+  padding: 5px;
+  margin: 0px 5px;
+}
+
+.div-carrito button{
+  flex-direction: end;
+  z-index: 11;
+  max-width: 100px;
+  max-height: 100px;
+  width: fit-content;
+  height: fit-content;
+  padding: 2px;
+  border-radius: 10%;
+}
+
+.div-carrito img{
+  max-width: 35px;
+  max-height: 35px;
+  min-width: 35px;
+  min-height: 35px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.carrito-inferior{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  height: fit-content;
+  position: sticky;
+  bottom: -10px;
+  background-color: #2D2D2D;
+  z-index: 1000;
+}
+
+.carrito-inferior > *{
+  width: fit-content;
+  height: fit-content;
+  margin: 10px 0px;
+}
+
+.carrito-inferior button{
+  min-width: 60px;
+  min-height: 30px;
+  width: fit-content;
+  height: fit-content;
+  padding: 2px;
+  border-radius: 10%;
+}
+}
