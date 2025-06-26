@@ -14,7 +14,7 @@ const Login = () => {
         e.preventDefault(); // Evita que la página se recargue
         console.log('Datos enviados:', formData);
         
-        const response = await fetch('https://danos.byethost6.com', {
+        const response = await fetch('https://ecomerce.is-great.net', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json', // Indica que se envía JSON  
@@ -25,7 +25,7 @@ const Login = () => {
         try{
 
             //esta es la respueta del server, en ella se aplican diferentes valores que haran cambios en la interfaz de usuario
-            const respuesta = await response.text();
+            const respuesta = await response.json();
 
             let respuestaExitosa = respuesta['success'];
 

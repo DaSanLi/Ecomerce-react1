@@ -3,7 +3,7 @@ import { useState } from "react"
 const Registro = () => {  
 
 const [ datosForm, setDatosForm ] = useState({
-    email: "",
+    emailR: "",
     nick: "",
     password: ""
 });
@@ -18,7 +18,7 @@ const handleSubmit = async (e) =>{
     e.preventDefault(); // Evita que la página se recargue
     console.log(datosForm);
 
-const response = await fetch('https://danos.byethost6.com', {
+const response = await fetch('https://ecomerce.is-great.net', {
         method: 'POST',
         headers: {
                 'Content-Type': 'application/json', // Indica que se envía JSON  
