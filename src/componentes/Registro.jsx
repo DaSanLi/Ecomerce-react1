@@ -3,7 +3,7 @@ import { useState } from "react"
 const Registro = () => {  
 
 const [ datosForm, setDatosForm ] = useState({
-    emailR: "",
+    email: "",
     nick: "",
     password: ""
 });
@@ -18,7 +18,7 @@ const handleSubmit = async (e) =>{
     e.preventDefault(); // Evita que la página se recargue
     console.log(datosForm);
 
-const response = await fetch('https://ecomerce.is-great.net', {
+const response = await fetch('https://ecomerce.is-great.net/Registro.php', {
         method: 'POST',
         headers: {
                 'Content-Type': 'application/json', // Indica que se envía JSON  
@@ -50,11 +50,11 @@ return (
                 </legend>
                 <legend>
                     <div className="formInterior">
-                        <label htmlFor="emailR">Email</label>
+                        <label htmlFor="email">Email</label>
                         <input 
                         type="email"
-                        name="emailR"
-                        id="emailR"
+                        name="email"
+                        id="email"
                         placeholder="Ingresa tu correo electronico"
                         onChange={handleChange}/>
                     </div>

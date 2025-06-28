@@ -3,7 +3,7 @@ import { useState } from "react";
 const Login = () => {
 
     const [formData, setFormData] = useState({
-        emailL: '',
+        email: '',
         password: ''
     });
 
@@ -14,7 +14,7 @@ const Login = () => {
         e.preventDefault(); // Evita que la página se recargue
         console.log('Datos enviados:', formData);
         
-        const response = await fetch('https://ecomerce.is-great.net', {
+        const response = await fetch('https://ecomerce.is-great.net/Login.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json', // Indica que se envía JSON  
@@ -58,11 +58,11 @@ const Login = () => {
             <div className="login"> 
                 <form onSubmit={handleSubmit}>
                     <div className="inputLogin">
-                        <label htmlFor="emailL">Email: </label>
+                        <label htmlFor="email">Email: </label>
                         <input 
                             type="email" 
-                            id="emailL"
-                            name="emailL"
+                            id="email"
+                            name="email"
                             onChange={handleChange} 
                             placeholder="Email"
                         />
