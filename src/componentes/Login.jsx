@@ -14,7 +14,7 @@ const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Datos enviados:", formData);
 
-        const response = await fetch('https://ecomerce.is-great.net/Registro.php', {
+        const response = await fetch('https://ecomerce.is-great.net/Login.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
