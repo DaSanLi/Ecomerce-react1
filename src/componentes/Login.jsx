@@ -3,53 +3,53 @@ import { useState } from "react";
 const Login = () => {
 
     const [formData, setFormData] = useState({
-        email: '',
-        password: ''
+        emailL: '',
+        passwordL: ''
     });
 
     const [ usuario, setUsuario ] = useState(null);
     const [ bienvenida, setBienvenida ] = useState(false);
 
-    const handleSubmit = async (e) => {
-        e.preventDefault(); // Evita que la página se recargue
-        console.log('Datos enviados:', formData);
-        
-        const response = await fetch('https://ecomerce.is-great.net/Login.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json', // Indica que se envía JSON  
-        },
-        body: JSON.stringify(formData), // Convierte el objeto a JSON
+const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log("Datos enviados:", formData);
+
+        const response = await fetch('http://localhost/tareasPHP/API_REST/Login.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
         });
 
-        try{
-
-            //esta es la respueta del server, en ella se aplican diferentes valores que haran cambios en la interfaz de usuario
-            const respuesta = await response.json();
-
-            let respuestaExitosa = respuesta['success'];
-
-            if(respuestaExitosa){
-                setBienvenida(true);
-                setUsuario((respuesta["nick"]));
-            }
-
-            if (!response.ok) {
-                const errorRespuesta = await response.json();
-                throw new Error(`Error del servidor: ${response.status} - ${errorRespuesta}`);
-            }
-            
-        } catch (err) {
-            console.log("Ha ocurrido un error:", err);
+        if(response.status !== 200){
+            console.log("el codigo de request es:", response.status);
         }
-    };
 
-    const handleChange = (e) => {
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error("Error HTTP:", response.status);
+            console.error("Detalles:", errorText);
+            return;
+        }
+
+        const datosProcesados = await response.json();
+
+        if (datosProcesados?.nick) {
+            setUsuario(datosProcesados.nick);
+            setBienvenida(true);
+        } else {
+            console.warn("Respuesta sin nick:", datosProcesados);
+        }
+
+
+};
+
+    const handleChange = (e) =>{
         setFormData((prev) => ({
-            ...prev, 
-            [ e.target.name ]: e.target.value
-        }));
-    };
+            ...prev, [e.target.name]: e.target.value
+        }))
+    }
 
 
     return (
@@ -58,23 +58,22 @@ const Login = () => {
             <div className="login"> 
                 <form onSubmit={handleSubmit}>
                     <div className="inputLogin">
-                        <label htmlFor="email">Email: </label>
+                        <label htmlFor="emailL">Email: </label>
                         <input 
-                            type="email" 
-                            id="email"
-                            name="email"
-                            onChange={handleChange} 
-                            placeholder="Email"
+                            id="emailL"
+                            name="emailL"
+                            placeholder="ingresa tu email"
+                            onChange={handleChange}
                         />
                     </div>
                     <div className="inputLogin">
-                        <label htmlFor="password">Password: </label>
+                        <label htmlFor="passwordL">Password: </label>
                         <input 
                             type="password"
-                            id="password"
-                            name="password"
+                            id="passwordL"
+                            name="passwordL"
+                            placeholder="ingresa tu contraseña"
                             onChange={handleChange}
-                            placeholder="Contraseña"
                         />
                     </div>
                     <button type="submit">Enviar</button>

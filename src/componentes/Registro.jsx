@@ -3,9 +3,9 @@ import { useState } from "react"
 const Registro = () => {  
 
 const [ datosForm, setDatosForm ] = useState({
-    email: "",
+    emailR: "",
     nick: "",
-    password: ""
+    passwordR: ""
 });
 
 const handleChange = (e) => {
@@ -18,15 +18,16 @@ const handleSubmit = async (e) =>{
     e.preventDefault(); // Evita que la página se recargue
     console.log(datosForm);
 
-const response = await fetch('https://ecomerce.is-great.net/Registro.php', {
+    try{
+
+        const response = await fetch('http://localhost/tareasPHP/API_REST/Registro.php', {
         method: 'POST',
         headers: {
-                'Content-Type': 'application/json', // Indica que se envía JSON  
-            },
-        body: JSON.stringify(datosForm), // Convierte el objeto a JSON
-    });
+                    'Content-Type': 'application/json', // Indica que se envía JSON  
+                },
+            body: JSON.stringify(datosForm), // Convierte el objeto a JSON
+        });
 
-    try{
         const text = await response.text();
         console.log(text);
 
@@ -50,11 +51,11 @@ return (
                 </legend>
                 <legend>
                     <div className="formInterior">
-                        <label htmlFor="email">Email</label>
+                        <label htmlFor="emailR">Email</label>
                         <input 
                         type="email"
-                        name="email"
-                        id="email"
+                        name="emailR"
+                        id="emailR"
                         placeholder="Ingresa tu correo electronico"
                         onChange={handleChange}/>
                     </div>
@@ -72,11 +73,11 @@ return (
                 </legend>
                 <legend>
                     <div className="formInterior">
-                        <label htmlFor="password">Contraseña</label>
+                        <label htmlFor="passwordR">Contraseña</label>
                         <input 
                         type="password"
-                        name="password"
-                        id="password"
+                        name="passwordR"
+                        id="passwordR"
                         placeholder="Ingresa tu contraseña"
                         onChange={handleChange}/>
                     </div>
