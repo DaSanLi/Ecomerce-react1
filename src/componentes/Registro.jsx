@@ -20,7 +20,7 @@ const handleSubmit = async (e) =>{
 
     try{
 
-        const response = await fetch('http://localhost/tareasPHP/API_REST/Registro.php', {
+        const response = await fetch('https://ecomerce.is-great.net/Registro.php', {
         method: 'POST',
         headers: {
                     'Content-Type': 'application/json', // Indica que se envía JSON  
