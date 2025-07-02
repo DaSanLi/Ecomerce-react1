@@ -14,7 +14,7 @@ const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Datos enviados:", formData);
 
-        const response = await fetch('https://ecomerce.is-great.net/Login.php', {
+        const response = await fetch(/*'https://ecomerce.is-great.net/Login.php'*/ 'http://localhost/tareasPHP/API_REST/Login.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -22,18 +22,17 @@ const handleSubmit = async (e) => {
             body: JSON.stringify(formData),
         });
 
+        const datosProcesados = await response.json();
+
         if(response.status !== 200){
             console.log("el codigo de request es:", response.status);
         }
 
         if (!response.ok) {
-            const errorText = await response.text();
             console.error("Error HTTP:", response.status);
-            console.error("Detalles:", errorText);
+            console.error("Detalles:", datosProcesados);
             return;
         }
-
-        const datosProcesados = await response.json();
 
         if (datosProcesados?.nick) {
             setUsuario(datosProcesados.nick);

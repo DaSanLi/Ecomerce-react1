@@ -4,8 +4,8 @@ const Registro = () => {
 
 const [ datosForm, setDatosForm ] = useState({
     emailR: "",
-    nick: "",
-    passwordR: ""
+    passwordR: "",
+    nick: ""
 });
 
 const handleChange = (e) => {
@@ -20,7 +20,7 @@ const handleSubmit = async (e) =>{
 
     try{
 
-        const response = await fetch('https://ecomerce.is-great.net/Registro.php', {
+        const response = await fetch(/*'https://ecomerce.is-great.net/Registro.php'*/'http://localhost/tareasPHP/API_REST/Registro.php', {
         method: 'POST',
         headers: {
                     'Content-Type': 'application/json', // Indica que se envía JSON  
@@ -28,12 +28,11 @@ const handleSubmit = async (e) =>{
             body: JSON.stringify(datosForm), // Convierte el objeto a JSON
         });
 
-        const text = await response.text();
+        const text = await response.json();
         console.log(text);
 
             if (!response.ok) {
-                const errorText = await response.text();
-                throw new Error(`Error del servidor: ${response.status} - ${errorText}`);
+                throw new Error(`Error del servidor: ${response.status} - ${text}`);
             }
         
     } catch (err) {
@@ -62,23 +61,23 @@ return (
                 </legend>
                 <legend>
                     <div className="formInterior">
-                        <label htmlFor="nick">Nick</label>
-                        <input 
-                        type="text"
-                        name="nick"
-                        id="nick"
-                        placeholder="Ingresa tu seudónimo"
-                        onChange={handleChange}/>
-                    </div>
-                </legend>
-                <legend>
-                    <div className="formInterior">
                         <label htmlFor="passwordR">Contraseña</label>
                         <input 
                         type="password"
                         name="passwordR"
                         id="passwordR"
                         placeholder="Ingresa tu contraseña"
+                        onChange={handleChange}/>
+                    </div>
+                </legend>
+                <legend>    
+                    <div className="formInterior">
+                        <label htmlFor="nick">Nick</label>
+                        <input 
+                        type="text"
+                        name="nick"
+                        id="nick"
+                        placeholder="Ingresa tu seudónimo"
                         onChange={handleChange}/>
                     </div>
                 </legend>
